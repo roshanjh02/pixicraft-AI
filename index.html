@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixiCraft AI - Studio</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg: #0b0f1a;
+            --card: rgba(255, 255, 255, 0.06);
+            --accent: #00d2ff;
+            --premium: #facc15;
+            --pro-grad: linear-gradient(45deg, #f12711, #f5af19);
+        }
+        body {
+            background-color: var(--bg);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header { text-align: center; margin-bottom: 20px; }
+        .status-bar { background: var(--card); padding: 10px 20px; border-radius: 50px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1); font-size: 14px; }
+        
+        /* Subscription Grid */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; width: 100%; max-width: 800px; margin-bottom: 30px; }
+        .plan-btn { background: var(--card); padding: 15px 10px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); text-align: center; cursor: pointer; transition: 0.3s; }
+        .plan-btn.active { border-color: var(--accent); background: rgba(0, 210, 255, 0.1); }
+        .plan-btn h5 { margin: 0; font-size: 14px; }
+        .plan-btn span { font-size: 12px; color: var(--accent); font-weight: bold; }
+
+        /* Feature Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; width: 100%; max-width: 800px; }
+        .card { background: var(--card); padding: 20px; border-radius: 20px; text-align: center; transition: 0.3s; cursor: pointer; border: 1px solid transparent; }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .icon { margin-bottom: 10px; color: var(--accent); }
+
+        /* Output & Watermark */
+        #studio-output { position: relative; margin-top: 30px; width: 100%; max-width: 600px; border-radius: 15px; display: none; }
+        #res-img { width: 100%; border-radius: 15px; border: 1px solid var(--card); }
+        .watermark { position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.6); padding: 5px 12px; border-radius: 6px; font-size: 11px; display: none; border: 1px solid rgba(255,255,255,0.2); }
+
+        .action-btn { background: var(--accent); color: #000; border: none; padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>PixiCraft <span style="color: var(--accent);">AI</span></h1>
+    <div class="status-bar" id="user-status">Mode: <span style="color:var(--accent)">Free (Ads Enabled)</span></div>
+</header>
+
+<div class="pricing-grid">
+    <div class="plan-btn active" onclick="selectPlan('Free', 0, this)">
+        <h5>Free</h5>
+        <span>₹0</span>
+    </div>
+    <div class="plan-btn" onclick="selectPlan('Weekly', 99, this)">
+        <h5>Weekly</h5>
+        <span>₹99</span>
+    </div>
+    <div class="plan-btn" onclick="selectPlan('Monthly', 499, this)">
+        <h5>Monthly</h5>
+        <span>₹499</span>
+    </div>
+    <div class="plan-btn" onclick="selectPlan('Yearly', 1999, this)">
+        <h5>Yearly</h5>
+        <span>₹1999</span>
+    </div>
+    <div class="plan-btn" onclick="selectPlan('Lifetime', 2999, this)" style="border-color: var(--premium);">
+        <h5 style="color: var(--premium);">Lifetime</h5>
+        <span>₹2999</span>
+    </div>
+</div>
+
+<div class="grid">
+    <div class="card" onclick="runAI('AI Reel Maker')"><div class="icon"><i data-lucide="video"></i></div>AI Reel Maker</div>
+    <div class="card" onclick="runAI('Voice Clone')"><div class="icon"><i data-lucide="mic-2"></i></div>Voice Clone</div>
+    <div class="card" onclick="runAI('4K Enhance')"><div class="icon"><i data-lucide="monitor-up"></i></div>4K Enhance</div>
+    <div class="card" onclick="runAI('Magic Eraser')"><div class="icon"><i data-lucide="eraser"></i></div>Object Eraser</div>
+</div>
+
+<div id="studio-output">
+    <img id="res-img" src="https://via.placeholder.com/600x400/111/fff?text=Processing+AI+Content...">
+    <div id="watermark" class="watermark">Made with PixiCraft AI</div>
+</div>
+
+<script src="script.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>
 
