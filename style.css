@@ -1,0 +1,146 @@
+body {
+    background-color: #05070a;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding-bottom: 50px;
+}
+
+header {
+    background: #111;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ffd700;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.logo span { color: #fff; }
+
+.wallet {
+    background: #ffd700;
+    color: #000;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.lang-bar { padding: 10px; text-align: right; }
+
+.ad-btn {
+    width: 90%;
+    margin: 10px 5%;
+    padding: 15px;
+    background: linear-gradient(45deg, #ffd700, #b8860b);
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 15px;
+}
+
+.card {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+
+.card:active { transform: scale(0.95); border-color: #ffd700; }
+
+.card i { font-size: 2rem; color: #ffd700; margin-bottom: 10px; }
+
+.premium { border: 1px dashed #ffd700; position: relative; }
+.pricing { padding: 20px; }
+
+.plan {
+    background: #222;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-left: 5px solid #ffd700;
+}
+
+
+}
+
+.pricing { padding: 15px; }
+
+.plan {
+    backgroun
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-left: 4px solid #ffd700;
+}
+/* Card par click karne par glow effect */
+.card:active {
+    .card span {
+    font-size: 50px !important;
+    display: block !important;
+    margin: 10px auto !important;
+    text-align: center;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+}
+
+    margin-bottom: 10px;
+}
+/* --- Icons ko bada aur Glow dene ke liye --- */
+.card span {
+    font-size: 50px; 
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+    .badge {
+    position: absolute !important;
+    top: 5px !important;
+    right: 5px !important;
+    background: #ffd700 !important;
+    color: #000 !important;
+    font-size: 10px !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+    width: auto !important;
+    height: auto !important;
+    display: inline-block !important;
+}
+
+    height: auto !important;
+    line-height: normal !important;
+}
+
+    background: #ffd700;
+    color: #000;
+    font-size: 10px; /* Size chota kiya */
+    padding: 2px 8px;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Card ko position relative dena zaroori hai badge ke liye */
+.card {
+    position: relative;
+    overflow: hidden;
+}
+
