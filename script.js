@@ -1,9 +1,8 @@
-
 let currentPlan = "Free";
 let isPremium = false;
+const HF_TOKEN = "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"; // Aapka fresh token
 
 window.selectPlan = function(name, price, element) {
-    // Remove active class from all buttons
     document.querySelectorAll('.plan-btn').forEach(btn => btn.classList.remove('active'));
     element.classList.add('active');
 
@@ -13,7 +12,7 @@ window.selectPlan = function(name, price, element) {
             isPremium = true;
             currentPlan = name;
             document.getElementById('user-status').innerHTML = `Mode: <span style="color:#facc15">PRO (${name})</span>`;
-            alert(`Payment Success! You are now a ${name} member.`);
+            alert('Payment Success! You are now a ' + name + ' member.');
         }
     } else {
         isPremium = false;
@@ -23,24 +22,53 @@ window.selectPlan = function(name, price, element) {
 };
 
 window.runAI = async function(feature) {
-    const output = document.getElementById('studio-output');
+    const output = document.getElementById("studio-output");
+    const resImg = document.getElementById("res-img");
     const wm = document.getElementById('watermark');
+
+    // 1. Prompt mangiye
+    const prompt = window.prompt(`Bhai, ${feature} ke liye kya banau?`, "A robotic lion in space, 8k, cinematic");
+    if (!prompt) return;
+
+    // 2. Loading start
+    output.style.display = 'block';
+    output.scrollIntoView({ behavior: 'smooth' });
+    resImg.src = "https://via.placeholder.com/600x400/111/fff?text=PixiCraft-AI-is-Thinking...";
 
     if (!isPremium) {
         alert("Free Plan: Watching Ad to unlock " + feature);
-        await new Promise(r => setTimeout(r, 3000)); // Simulate Ad
+        await new Promise(r => setTimeout(r, 2000)); 
     }
 
-    output.style.display = 'block';
-    output.scrollIntoView({ behavior: 'smooth' });
+    // 3. Asli AI Call (Hugging Face)
+    try {
+        const response = await fetch(
+            "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5",
+            {
+                headers: { Authorization: `Bearer ${HF_TOKEN}` },
+                method: "POST",
+                body: JSON.stringify({ inputs: prompt }),
+            }
+        );
 
-    setTimeout(() => {
-        if (!isPremium) {
-            wm.style.display = 'block';
-            alert(`${feature} Ready! (Watermark Added)`);
+        if (response.ok) {
+            const blob = await response.blob();
+            const imgUrl = URL.createObjectURL(blob);
+            resImg.src = imgUrl;
+
+            // 4. Watermark Logic
+            if (isPremium) {
+                wm.style.display = 'none';
+                alert(`${feature} Ready! (PRO Quality - No Watermark)`);
+            } else {
+                wm.style.display = 'block';
+                alert(`${feature} Ready! (Watermark Added)`);
+            }
         } else {
-            wm.style.display = 'none';
-            alert(`${feature} Ready! (PRO Quality - No Watermark)`);
+            alert("Bhai, server thoda busy hai. Ek baar phir try karein!");
         }
-    }, 2000);
+    } catch (error) {
+        console.error(error);
+        alert("Internet issue ya connection error!");
+    }
 };
