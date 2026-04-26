@@ -20,7 +20,13 @@ window.selectPlan = function(name, price, element) {
     }
 };
 
-window.runAI = async function(feature) {
+window.runAI = async function(feature) {    // Security Lock: Bina login ke AI nahi chalega
+    if (localStorage.getItem('pixicraft_auth') !== 'true') {
+        alert("Bhai, pehle login toh kar lo!");
+        document.getElementById('auth-overlay').style.display = 'flex';
+        return; // Yahan se code ruk jayega
+    }
+    
     const output = document.getElementById("studio-output");
     const resImg = document.getElementById("res-img");
     const wm = document.getElementById('watermark');
@@ -66,32 +72,46 @@ window.runAI = async function(feature) {
         // --- PixiCraft Login System Logic ---
 
 // Website khulte hi check karega user login hai ya nahi
+// --- PixiCraft Smart Login & Remember Me Logic ---
 window.addEventListener('load', () => {
-    const isAuth = localStorage.getItem('pixicraft_auth');
-    const overlay = document.getElementById('auth-overlay');
-    if (isAuth === 'true') {
-        overlay.style.display = 'none'; // Agar login hai toh parda hata do
-    } else {
-        overlay.style.display = 'flex'; // Warna login dikhao
+    if (localStorage.getItem('pixicraft_auth') === 'true') {
+        document.getElementById('auth-overlay').style.display = 'none';
+    } 
+    else if (localStorage.getItem('remembered_email')) {
+        document.getElementById('user-email').value = localStorage.getItem('remembered_email');
+        document.getElementById('user-pass').value = localStorage.getItem('remembered_pass');
+        document.getElementById('remember-me').checked = true;
     }
 });
 
-// Login aur Signup button ka kaam
 window.handleAuth = function(type) {
     const email = document.getElementById('user-email').value;
     const pass = document.getElementById('user-pass').value;
+    const remember = document.getElementById('remember-me').checked;
     const msg = document.getElementById('auth-msg');
 
     if (email.includes('@') && pass.length >= 6) {
-        localStorage.setItem('pixicraft_auth', 'true'); // Browser mein save kar lega
+        if (remember) {
+            localStorage.setItem('remembered_email', email);
+            localStorage.setItem('remembered_pass', pass);
+        } else {
+            localStorage.removeItem('remembered_email');
+            localStorage.removeItem('remembered_pass');
+        }
+
+        localStorage.setItem('pixicraft_auth', 'true');
         msg.style.color = "#00d2ff";
-        msg.innerText = "Processing... PixiCraft AI is ready!";
+        msg.innerText = type === 'login' ? "Welcome Back! 🚀" : "Account Created! 🚀";
         
         setTimeout(() => {
             document.getElementById('auth-overlay').style.display = 'none';
         }, 1000);
     } else {
-        msg.innerText = "Bhai, sahi Email aur Password (min 6 characters) dalo!";
+        msg.style.color = "#ff4444";
+        msg.innerText = "Sahi details dalo bhai (Min 6 characters)!";
+    }
+};
+        
     }
 };
         
