@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PixiCraft-AI | Roshan Murmu Studio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body oncontextmenu="return false;">
+
+    <div id="auth-overlay" class="auth-overlay">
+        <div class="auth-card">
+            <h1 class="main-logo">PixiCraft-<span>AI</span></h1>
+            <p class="tagline">Next-Gen Studio by Roshan Murmu</p>
+            <input type="email" id="user-email" placeholder="Email Address" class="auth-input">
+            <input type="password" id="user-pass" placeholder="Password" class="auth-input">
+            <button onclick="handleAuth()" class="auth-btn">Launch Studio</button>
+        </div>
+    </div>
+
+    <div id="app-ui" class="app-container" style="display:none;">
+        <header class="app-header">
+            <h2 class="header-logo">PixiCraft-<span>AI</span></h2>
+            <div class="header-tools">
+                <span id="trial-badge" class="trial-tag" onclick="toggleSub()">GET PRO 💎</span>
+            </div>
+        </header>
+
+        <nav class="top-nav">
+            <button id="btn-ai" class="nav-btn active" onclick="showCategory('ai')">🪄 AI</button>
+            <button id="btn-video" class="nav-btn" onclick="showCategory('video')">🎞️ Edit</button>
+            <button id="btn-audio" class="nav-btn" onclick="showCategory('audio')">🎵 Audio</button>
+            <button id="btn-assets" class="nav-btn" onclick="showCategory('assets')">🎨 FX</button>
+        </nav>
+
+        <main class="content-scroll">
+            <div class="feature-grid" id="tools-display"></div>
+            
+            <div id="studio-output" class="studio-preview">
+                <div id="working-area">
+                    <p>Select a tool to begin processing</p>
+                </div>
+                <div class="watermark">PixiCraft-AI | Roshan Murmu</div>
+            </div>
+        </main>
+
+        <div id="sub-modal" class="support-overlay" style="display:none;">
+            <div class="auth-card pro-modal">
+                <div class="close-x" onclick="toggleSub()">✖</div>
+                <h2 style="color:#ffd700;">PixiCraft PRO 💎</h2>
+                <div class="pro-features">
+                    <p>✅ Ads Removed (Filmora Style)</p>
+                    <p>✅ 4K AI Upscale Enabled</p>
+                    <p>✅ No Watermark on Export</p>
+                    <p>✅ AI Voice Cloning Active</p>
+                </div>
+                <div class="price-tag">
+                    <span class="old-price">₹499</span> <span class="new-price">₹199</span>
+                </div>
+                <button onclick="processPayment()" class="auth-btn gold-btn">ACTIVATE VIA UPI</button>
+                <p style="font-size: 8px; color: #555; margin-top: 10px;">Safe Gateway: Razorpay & UPI</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="ad-container" class="ad-banner-slot">
+        <div id="ad-placeholder">Sponsor Ad Space</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
 
