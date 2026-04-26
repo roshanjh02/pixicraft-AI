@@ -1,1 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PixiCraft-AI | Roshan Murmu</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
+</head>
+<body oncontextmenu="return false;">
+
+    <div id="auth-overlay" class="auth-overlay">
+        <div class="auth-card">
+            <h1 class="main-logo">PixiCraft-<span>AI</span></h1>
+            <p class="tagline">Next-Gen Creative Studio</p>
+            <div class="auth-tabs">
+                <button class="active">Login</button>
+                <button>Sign Up</button>
+            </div>
+            <input type="email" id="user-email" placeholder="Email Address" class="auth-input">
+            <input type="password" id="user-pass" placeholder="Password" class="auth-input">
+            <button onclick="handleAuth()" class="auth-btn">Launch Studio</button>
+            <p class="studio-footer">Powered by Roshan Web Studio</p>
+        </div>
+    </div>
+
+    <div id="app-ui" class="app-container" style="display:none;">
+        <header class="app-header">
+            <h2 class="header-logo">PixiCraft-<span>AI</span></h2>
+            <div class="header-tools">
+                <span id="trial-badge" class="trial-tag">PRO TRIAL</span>
+                <button onclick="toggleSupport()" class="help-btn">🛠️ Help</button>
+            </div>
+        </header>
+
+        <nav class="top-nav">
+            <button id="btn-ai" class="nav-btn active" onclick="showCategory('ai')">🪄 AI</button>
+            <button id="btn-video" class="nav-btn" onclick="showCategory('video')">🎞️ Edit</button>
+            <button id="btn-audio" class="nav-btn" onclick="showCategory('audio')">🎵 Audio</button>
+            <button id="btn-assets" class="nav-btn" onclick="showCategory('assets')">🎨 FX</button>
+        </nav>
+
+        <main class="content-scroll">
+            <div class="feature-grid" id="tools-display"></div>
+            
+            <div id="studio-output" class="studio-preview">
+                <div id="loader" style="display:none;">⏳ AI Processing...</div>
+                <div id="working-area">
+                    <p>Select a future-ready tool to begin</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="support-modal" class="support-overlay" style="display:none;">
+        <div class="support-card">
+            <h4>Help & Technical Support</h4>
+            <div class="support-links">
+                <div class="s-link wa">WhatsApp (Coming Soon)</div>
+                <a href="mailto:roshanmurmu273@gmail.com" class="s-link mail">roshanmurmu273@gmail.com</a>
+            </div>
+            <textarea id="issue-box" placeholder="Report a bug or request a feature..."></textarea>
+            <button onclick="sendReport()" class="auth-btn">Submit Report</button>
+            <button onclick="toggleSupport()" class="close-btn">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
 
