@@ -1,2 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixiCraft AI - Roshan Murmu Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
+</head>
+<body oncontextmenu="return false;"> <div id="auth-overlay" class="auth-overlay">
+        <div class="auth-card">
+            <h2 class="brand-logo">PixiCraft <span>AI</span></h2>
+            <p class="tagline">Advance Video & Photo Studio</p>
+            <div class="auth-form">
+                <input type="email" id="user-email" placeholder="📧 Email Address" class="auth-input">
+                <input type="password" id="user-pass" placeholder="🔒 Password" class="auth-input">
+                <div class="remember-box">
+                    <input type="checkbox" id="remember-me"> <label for="remember-me">Remember Me</label>
+                </div>
+                <button onclick="handleAuth()" class="main-btn">Enter Studio</button>
+            </div>
+            <p class="footer-text">By Roshan Web Studio</p>
+        </div>
+    </div>
 
+    <div id="app-ui" class="app-container" style="display:none;">
+        <header class="app-header">
+            <div class="logo-section">
+                <h3>PixiCraft Pro</h3>
+            </div>
+            <div class="header-actions">
+                <span id="trial-days" class="badge">Trial</span>
+                <button onclick="toggleSupport()" class="icon-btn">🛠️ Help</button>
+            </div>
+        </header>
 
+        <main class="app-content">
+            <div class="preset-selector">
+                <button class="preset-btn" onclick="setPreset('9:16')">📱 Reel</button>
+                <button class="preset-btn" onclick="setPreset('16:9')">📺 YouTube</button>
+            </div>
+
+            <div class="tool-grid" id="tools-display"></div>
+            
+            <div id="studio-output" class="app-preview">
+                <div id="loader" class="loader" style="display:none;">⏳ Processing...</div>
+                <div id="working-area" class="working-area">
+                    <p>Select a tool to start creating</p>
+                </div>
+            </div>
+        </main>
+
+        <nav class="bottom-nav">
+            <button class="nav-item active" onclick="showCategory('ai')">🪄 AI</button>
+            <button class="nav-item" onclick="showCategory('video')">🎞️ Edit</button>
+            <button class="nav-item" onclick="showCategory('audio')">🎵 Audio</button>
+            <button class="nav-item" onclick="showCategory('assets')">🎨 FX</button>
+        </nav>
+    </div>
+
+    <div id="support-modal" class="support-overlay" style="display:none;">
+        <div class="support-card">
+            <div class="support-header">
+                <h4>Help Center</h4>
+                <button onclick="toggleSupport()">✖</button>
+            </div>
+            <div class="support-body">
+                <div class="support-link wa">💬 WhatsApp (Coming Soon)</div>
+                <a href="mailto:roshanmurmu273@gmail.com" class="support-link mail">📧 roshanmurmu273@gmail.com</a>
+                <hr>
+                <h5>Report a Bug</h5>
+                <textarea id="issue-box" placeholder="Technical details auto-collected..."></textarea>
+                <button onclick="sendReport()" class="main-btn">Send Report</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
