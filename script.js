@@ -63,11 +63,37 @@ window.runAI = async function(feature) {
         img.onerror = function() {
             alert("Bhai, server busy hai. Ek baar phir try karein.");
         };
-        img.src = engineUrl;
+        // --- PixiCraft Login System Logic ---
 
-    } catch (error) {
-        console.error(error);
-        alert("Connection busy. Try again!");
+// Website khulte hi check karega user login hai ya nahi
+window.addEventListener('load', () => {
+    const isAuth = localStorage.getItem('pixicraft_auth');
+    const overlay = document.getElementById('auth-overlay');
+    if (isAuth === 'true') {
+        overlay.style.display = 'none'; // Agar login hai toh parda hata do
+    } else {
+        overlay.style.display = 'flex'; // Warna login dikhao
+    }
+});
+
+// Login aur Signup button ka kaam
+window.handleAuth = function(type) {
+    const email = document.getElementById('user-email').value;
+    const pass = document.getElementById('user-pass').value;
+    const msg = document.getElementById('auth-msg');
+
+    if (email.includes('@') && pass.length >= 6) {
+        localStorage.setItem('pixicraft_auth', 'true'); // Browser mein save kar lega
+        msg.style.color = "#00d2ff";
+        msg.innerText = "Processing... PixiCraft AI is ready!";
+        
+        setTimeout(() => {
+            document.getElementById('auth-overlay').style.display = 'none';
+        }, 1000);
+    } else {
+        msg.innerText = "Bhai, sahi Email aur Password (min 6 characters) dalo!";
     }
 };
+        
+        
 
