@@ -48,25 +48,30 @@
     </style>
 </head>
 <body>
-<div id="auth-overlay" class="auth-overlay">
+ <div id="auth-overlay" class="auth-overlay">
     <div class="auth-card">
-        <div class="auth-header">
-            <h2 style="color: #00d2ff;">PixiCraft <span style="color: #fff;">AI</span></h2>
-            <p style="color: #ccc; font-size: 14px;">Hazaribagh's First AI Tool<br>Please Login to Continue</p>
-        </div>
+        <h2 style="color: #00d2ff; margin-bottom: 5px;">PixiCraft <span style="color: #fff;">AI</span></h2>
+        <p style="color: #888; font-size: 12px; margin-bottom: 20px;">Hazaribagh's Premium AI Studio</p>
         
-        <div class="auth-body" style="margin-top: 20px;">
-            <input type="email" id="user-email" placeholder="Email Address" class="auth-input">
-            <input type="password" id="user-pass" placeholder="Password" class="auth-input">
+        <div class="auth-body">
+            <input type="email" id="user-email" placeholder="📧 Email Address" class="auth-input">
             
-            <div class="auth-buttons" style="display: flex; gap: 10px; margin-top: 20px;">
-                <button onclick="handleAuth('login')" class="main-btn" style="flex: 1; background: #00d2ff; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer;">Sign In</button>
-                <button onclick="handleAuth('signup')" class="secondary-btn" style="flex: 1; background: transparent; border: 1px solid #00d2ff; color: #00d2ff; padding: 12px; border-radius: 8px; cursor: pointer;">Sign Up</button>
+            <input type="password" id="user-pass" placeholder="🔒 Password" class="auth-input">
+
+            <div style="display: flex; align-items: center; gap: 8px; margin: 12px 5px; color: #888; font-size: 13px; justify-content: start;">
+                <input type="checkbox" id="remember-me" style="cursor: pointer;">
+                <label for="remember-me" style="cursor: pointer;">Remember Me</label>
+            </div>
+            
+            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <button onclick="handleAuth('login')" class="main-btn" style="flex: 2;">Sign In</button>
+                <button onclick="handleAuth('signup')" class="secondary-btn" style="flex: 1;">Sign Up</button>
             </div>
         </div>
-        <p id="auth-msg" style="color: #ff4444; font-size: 12px; margin-top: 15px;"></p>
+        <p id="auth-msg" style="font-size: 12px; margin-top: 15px; min-height: 15px;"></p>
     </div>
-</div>
+ </div>
+    
     
 <header>
     <h1>PixiCraft <span style="color: var(--accent);">AI</span></h1>
