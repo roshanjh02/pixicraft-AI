@@ -99,4 +99,53 @@ function devClick() {
         devCounter = 0;
     }
 }
+let currentStyle = 'cinematic';
+let currentRatio = '1024x1024';
+
+function selectStyle(el, style) {
+    document.querySelectorAll('.style-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+    currentStyle = style;
+}
+
+function setRatio(el, r) {
+    document.querySelectorAll('.ratio-btn').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+    if(r === '1:1') currentRatio = '1024x1024';
+    if(r === '16:9') currentRatio = '1280x720';
+    if(r === '9:16') currentRatio = '720x1280';
+}
+
+async function startGeneration() {
+    const prompt = document.getElementById('ai-prompt').value;
+    if(!prompt) return alert("Bhai, kuch toh likho!");
+
+    const loader = document.getElementById('loading-overlay');
+    const display = document.getElementById('result-display');
+    const btn = document.getElementById('generate-btn');
+
+    loader.style.display = 'block';
+    display.innerHTML = ''; // Clear previous
+    btn.disabled = true;
+
+    // Building the AI Secret URL
+    const seed = Math.floor(Math.random() * 999999);
+    const width = currentRatio.split('x')[0];
+    const height = currentRatio.split('x')[1];
+    const fullPrompt = encodeURIComponent(`${prompt}, ${currentStyle} style, 8k, masterpiece`);
+    
+    const imageUrl = `https://image.pollinations.ai/prompt/${fullPrompt}?width=${width}&height=${height}&seed=${seed}&nologo=true`;
+
+    // Pre-loading image
+    const img = new Image();
+    img.src = imageUrl;
+    img.className = 'final-img';
+    
+    img.onload = () => {
+        loader.style.display = 'none';
+        display.appendChild(img);
+        btn.disabled = false;
+        alert("Boom! PixiCraft ne Image taiyar kar di.");
+    };
+}
 
