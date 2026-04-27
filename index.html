@@ -1,1 +1,76 @@
 
+<div id="auth-container" class="fullscreen-modal">
+    <div class="auth-box">
+        <div class="auth-tabs">
+            <button id="tab-login" class="active" onclick="showAuth('login')">Login</button>
+            <button id="tab-register" onclick="showAuth('register')">Register</button>
+        </div>
+        <form id="login-form" onsubmit="handleAuth(event, 'login')">
+            <h2>Welcome Back</h2>
+            <div class="input-group"><i class="fas fa-envelope"></i><input type="email" id="l-email" placeholder="Email" required></div>
+            <div class="input-group"><i class="fas fa-lock"></i><input type="password" id="l-pass" placeholder="Password" required></div>
+            <p class="forgot-link" onclick="showAuth('forgot')">Forgot Password?</p>
+            <button type="submit" class="auth-btn">Sign In</button>
+        </form>
+        <form id="register-form" style="display:none;" onsubmit="handleAuth(event, 'register')">
+            <h2>Create Account</h2>
+            <div class="input-group"><i class="fas fa-user"></i><input type="text" id="r-name" placeholder="Full Name" required></div>
+            <div class="input-group"><i class="fas fa-envelope"></i><input type="email" id="r-email" placeholder="Email" required></div>
+            <div class="input-group"><i class="fas fa-lock"></i><input type="password" id="r-pass" placeholder="Password" required></div>
+            <button type="submit" class="auth-btn">Register Now</button>
+        </form>
+        <div id="forgot-form" style="display:none;">
+            <h2>Reset Password</h2>
+            <div class="input-group"><i class="fas fa-paper-plane"></i><input type="email" id="f-email" placeholder="Registered Email"></div>
+            <button class="auth-btn" onclick="handleAuth(event, 'forgot')">Send Reset Link</button>
+            <p class="forgot-link" onclick="showAuth('login')">Back to Login</p>
+        </div>
+    </div>
+</div>
+
+<div id="ai-image-modal" class="fullscreen-studio" style="display:none;">
+    <div class="studio-container">
+        <div class="studio-sidebar">
+            <div class="studio-header"><h3>AI Visual Studio</h3><span class="close-btn" onclick="toggleModal('ai-image-modal')">&times;</span></div>
+            <div class="control-group"><label>Describe your vision</label><textarea id="ai-prompt" placeholder="E.g. A futuristic city in rain..."></textarea></div>
+            <div class="control-group"><label>Art Style</label>
+                <div class="style-grid">
+                    <div class="style-item active" onclick="selectStyle(this, 'cinematic')"><span>Cinematic</span></div>
+                    <div class="style-item" onclick="selectStyle(this, 'anime')"><span>Anime</span></div>
+                </div>
+            </div>
+            <div class="control-group"><label>Aspect Ratio</label>
+                <div class="ratio-bar">
+                    <button class="ratio-btn active" onclick="setRatio(this, '1:1')">1:1</button>
+                    <button class="ratio-btn" onclick="setRatio(this, '16:9')">16:9</button>
+                </div>
+            </div>
+            <button class="glow-button" id="generate-btn" onclick="startGeneration()">GENERATE IMAGE</button>
+        </div>
+        <div class="studio-stage">
+            <div id="loading-overlay" style="display:none;"><div class="spinner"></div><p>PixiCraft is thinking...</p></div>
+            <div id="result-display"></div>
+        </div>
+    </div>
+</div>
+
+<div id="sub-modal" class="fullscreen-modal" style="display:none;">
+    <div class="sub-container">
+        <h2>Upgrade to Pixi Pro</h2>
+        <div class="plans-grid">
+            <div class="plan-card"><h3>Weekly</h3><div class="price">₹99</div><button onclick="alert('Payment Gateway coming soon!')">Buy</button></div>
+            <div class="plan-card featured"><h3>Monthly</h3><div class="price">₹199</div><button onclick="alert('Payment Gateway coming soon!')">Buy</button></div>
+            <div class="plan-card"><h3>Yearly</h3><div class="price">₹999</div><button onclick="alert('Payment Gateway coming soon!')">Buy</button></div>
+        </div>
+        <button class="close-sub" onclick="toggleModal('sub-modal')">Later</button>
+    </div>
+</div>
+
+<div id="chat-widget" onclick="toggleChat()"><i class="fas fa-comment-dots"></i></div>
+<div id="chat-window" style="display:none;">
+    <div class="chat-header"><span>Support</span><button onclick="toggleChat()">&times;</button></div>
+    <div id="chat-messages">
+        <p class="bot-msg">Hi! Contact me: <br><b>roshanmurmu273@gmail.com</b></p>
+        <a href="https://wa.me/91XXXXXXXXXX" class="wa-btn">WhatsApp Support</a>
+    </div>
+</div>
