@@ -21,9 +21,13 @@
 
     <div id="app-ui" class="app-container" style="display:none;">
         <header class="app-header">
-            <h2 class="header-logo">PixiCraft-<span>AI</span></h2>
-            <button onclick="toggleSupport()" style="background:none; border:none; color:var(--primary); font-weight:bold;">🛠️ Help</button>
-        </header>
+    <h2 class="header-logo">PixiCraft-<span>AI</span></h2>
+    
+    <button id="trial-badge" onclick="processPayment()" style="background:linear-gradient(90deg, #ffd700, #ffae00); border:none; color:black; font-weight:900; padding:6px 15px; border-radius:20px; font-size:10px; cursor:pointer; margin-right:10px; box-shadow: 0 0 10px rgba(255,215,0,0.3);">PRO TRIAL</button>
+    
+    <button onclick="toggleSupport()" style="background:none; border:none; color:var(--primary); font-weight:bold; cursor:pointer;">🛠️ Help</button>
+</header>
+
 
         <nav class="top-nav">
             <button id="btn-ai" class="nav-btn active" onclick="showCategory('ai')">🪄 AI</button>
