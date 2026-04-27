@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PixiCraft-AI | Roshan Murmu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body oncontextmenu="return false;">
 
+    <div id="auth-overlay" class="auth-overlay">
+        <div class="auth-card">
+            <h1 class="main-logo">PixiCraft-<span>AI</span></h1>
+            <p class="tagline">Next-Gen Studio by Roshan Murmu</p>
+            <input type="email" id="user-email" placeholder="Email Address" class="auth-input">
+            <input type="password" id="user-pass" placeholder="Password" class="auth-input">
+            <button onclick="handleAuth()" class="auth-btn">Launch Studio</button>
+        </div>
+    </div>
+
+    <div id="app-ui" class="app-container" style="display:none;">
+        <header class="app-header">
+            <h2 class="header-logo">PixiCraft-<span>AI</span></h2>
+            <button id="trial-badge" onclick="processPayment()" style="background:linear-gradient(90deg, #ffd700, #ffae00); border:none; color:black; font-weight:900; padding:6px 15px; border-radius:20px; font-size:10px; cursor:pointer;">PRO TRIAL</button>
+            <button onclick="toggleSupport()" style="background:none; border:none; color:var(--primary); font-weight:bold; cursor:pointer;">🛠️ Help</button>
+        </header>
+
+        <nav class="top-nav">
+            <button id="btn-ai" class="nav-btn active" onclick="showCategory('ai')">🪄 AI</button>
+            <button id="btn-edit" class="nav-btn" onclick="showCategory('edit')">🎞️ Edit</button>
+            <button id="btn-audio" class="nav-btn" onclick="showCategory('audio')">🎵 Audio</button>
+            <button id="btn-fx" class="nav-btn" onclick="showCategory('fx')">🎨 FX</button>
+        </nav>
+
+        <main class="content-scroll">
+            <div class="feature-grid" id="tools-display"></div>
+            <div class="studio-preview">
+                <div id="working-area">Ready for Creation</div>
+            </div>
+        </main>
+    </div>
+
+    <div id="support-modal" class="support-overlay" style="display:none;">
+        <div class="support-card">
+            <h2 style="color:var(--primary); margin-bottom:10px;">Technical Support</h2>
+            <div style="background:#000; padding:15px; border-radius:15px; border:1px solid #333; margin:15px 0;">
+                <p style="font-size:10px; color:#ffd700;">CONTACT EMAIL:</p>
+                <p style="font-weight:bold;">roshanmurmu273@gmail.com</p>
+            </div>
+            <button onclick="toggleSupport()" class="auth-btn" style="background:#ff4444; color:white;">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
