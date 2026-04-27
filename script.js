@@ -79,7 +79,9 @@ function switchTab(cat) {
     const grid = document.getElementById('tools-grid');
     grid.innerHTML = "";
     studioData[cat].forEach(t => {
-        grid.innerHTML += `<div class="tool-item" onclick="alert('Starting ${t.n}...')"><i>${t.i}</i><b>${t.n}</b></div>`;
+      grid.innerHTML += `<div class="tool-item" onclick="openStudio('${t.n}')"><i>${t.i}</i><b>${t.n}</b></div>`;
+        
+        
     });
 }
 
@@ -102,13 +104,14 @@ function devClick() {
 let currentStyle = 'cinematic';
 let currentRatio = '1024x1024';
 
-function selectStyle(el, style) {
-    document.querySelectorAll('.style-item').forEach(i => i.classList.remove('active'));
-    el.classList.add('active');
-    currentStyle = style;
+function openStudio(name) {
+    if(name === 'AI IMAGE') {
+        document.getElementById('ai-image-modal').style.display = 'flex';
+    } else {
+        alert("Starting " + name + "...");
+    }
 }
 
-function setRatio(el, r) {
     document.querySelectorAll('.ratio-btn').forEach(b => b.classList.remove('active'));
     el.classList.add('active');
     if(r === '1:1') currentRatio = '1024x1024';
