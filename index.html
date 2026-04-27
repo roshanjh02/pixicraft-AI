@@ -1,1 +1,44 @@
 
+<div id="auth-container">
+    <div class="auth-box">
+        <h1 class="logo-text">PixiCraft-AI</h1>
+        <div class="auth-tabs">
+            <button id="tab-login" class="active" onclick="showAuth('login')">Login</button>
+            <button id="tab-register" onclick="showAuth('register')">Register</button>
+        </div>
+
+        <form id="login-form" onsubmit="handleAuth(event, 'login')">
+            <div class="input-group"><i class="fas fa-envelope"></i><input type="email" id="l-email" placeholder="Email Address" required></div>
+            <div class="input-group"><i class="fas fa-lock"></i><input type="password" id="l-pass" placeholder="Password" required></div>
+            <p class="forgot-link" onclick="showAuth('forgot')">Forgot Password?</p>
+            <button type="submit" class="auth-btn">Sign In</button>
+        </form>
+
+        <form id="register-form" style="display:none;" onsubmit="handleAuth(event, 'register')">
+            <div class="input-group"><i class="fas fa-user"></i><input type="text" id="r-name" placeholder="Full Name" required></div>
+            <div class="input-group"><i class="fas fa-envelope"></i><input type="email" id="r-email" placeholder="Email Address" required></div>
+            <div class="input-group"><i class="fas fa-lock"></i><input type="password" id="r-pass" placeholder="Create Password" required></div>
+            <button type="submit" class="auth-btn">Create Account</button>
+        </form>
+
+        <div id="forgot-form" style="display:none;">
+            <div class="input-group"><i class="fas fa-paper-plane"></i><input type="email" id="f-email" placeholder="Enter your email"></div>
+            <button class="auth-btn" onclick="handleAuth(event, 'forgot')">Send Reset Link</button>
+            <p class="forgot-link" onclick="showAuth('login')">Back to Login</p>
+        </div>
+    </div>
+</div>
+
+<div id="app-ui" style="display:none;">
+    <div class="header"><h1>Pixi Studio</h1></div>
+    <div id="tools-grid"></div>
+</div>
+
+<div id="chat-widget" onclick="toggleChat()"><i class="fas fa-comment-dots"></i></div>
+<div id="chat-window" style="display:none;">
+    <div class="chat-header"><span>Pixi Support</span><button onclick="toggleChat()">×</button></div>
+    <div class="chat-body">
+        <p>Email: <b>roshanmurmu273@gmail.com</b></p>
+        <a href="https://wa.me/91XXXXXXXXXX" class="wa-btn">WhatsApp Us</a>
+    </div>
+</div>
