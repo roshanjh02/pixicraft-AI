@@ -1,1 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PixiCraft-AI | Creative Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body oncontextmenu="return false;">
+
+    <div id="auth-overlay" class="filmora-bg">
+        <div class="auth-container">
+            <div class="brand-header">
+                <div class="app-icon">P</div>
+                <h1>PixiCraft-<span>AI</span></h1>
+            </div>
+            <div class="auth-box">
+                <h2 id="auth-title">Sign In / Register</h2>
+                <p class="subtitle">Use your PixiCraft ID to continue</p>
+                
+                <div class="input-group">
+                    <input type="email" id="user-email" placeholder="Email Address" required>
+                    <input type="password" id="user-pass" placeholder="Password" required>
+                </div>
+                
+                <button id="login-btn" onclick="handleAuth()" class="main-btn">Continue</button>
+                
+                <div class="auth-footer">
+                    <p id="lock-timer" class="error-msg"></p>
+                    <p class="secure-tag">🛡️ Secured by Pixi Shield</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="app-ui" style="display:none;">
+        <header class="studio-header">
+            <div class="status-indicator">● Live</div>
+            <div class="logo">PIXICRAFT-<span>AI</span></div>
+            <div class="header-actions">
+                <button class="upgrade-btn" onclick="toggleModal('subs-modal')">Upgrade</button>
+                <button class="setting-icon" onclick="toggleModal('settings-modal')">⚙️</button>
+            </div>
+        </header>
+
+        <nav class="studio-nav">
+            <button id="btn-ai" class="nav-item active" onclick="switchTab('ai')">AI Tools</button>
+            <button id="btn-edit" class="nav-item" onclick="switchTab('edit')">Editing</button>
+            <button id="btn-audio" class="nav-item" onclick="switchTab('audio')">Audio</button>
+            <button id="btn-fx" class="nav-item" onclick="switchTab('fx')">Visuals</button>
+        </nav>
+
+        <main id="tools-grid" class="tools-grid"></main>
+
+        <div class="render-bar">
+            <div class="info-text">Project: Untitled_Project.mp4 | 4K Ready</div>
+            <div class="dev-tag" onclick="devClick()">Build v2.0.7 by Roshan Murmu</div>
+        </div>
+    </div>
+
+    <div id="settings-modal" class="modal-wrapper" style="display:none;">
+        <div class="modal-box">
+            <h3>Studio Settings</h3>
+            <div class="option"><span>GPU Acceleration</span><input type="checkbox" checked></div>
+            <div class="option"><span>Auto-Save Project</span><input type="checkbox" checked></div>
+            <button onclick="toggleModal('settings-modal')" class="close-btn">Done</button>
+        </div>
+    </div>
+
+    <div id="subs-modal" class="modal-wrapper" style="display:none;">
+        <div class="modal-box">
+            <h2 style="color:#00f2ff">Go Pro</h2>
+            <div class="price-card" onclick="pay('199')">Monthly VIP - ₹199</div>
+            <button onclick="toggleModal('subs-modal')" class="close-btn">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
 
