@@ -1,1 +1,49 @@
 
+:root { --primary: #00f2ff; --bg: #05070a; --card: #11141b; --gold: #ffd700; }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+body { background: var(--bg); color: #fff; overflow: hidden; user-select: none; }
+
+/* 🛡️ Secure Overlay */
+.secure-overlay { position: fixed; inset: 0; background: radial-gradient(circle, #0d1424, #05070a); z-index: 10000; display: flex; align-items: center; justify-content: center; }
+.auth-card { background: var(--card); padding: 40px; border-radius: 45px; border: 1px solid #1f2937; text-align: center; width: 90%; max-width: 380px; box-shadow: 0 0 50px rgba(0,242,255,0.1); }
+.logo span { color: var(--primary); text-shadow: 0 0 10px var(--primary); font-weight: 900; }
+.shield-logo { font-size: 50px; margin-bottom: 15px; filter: drop-shadow(0 0 15px var(--primary)); }
+
+input { width: 100%; padding: 16px; margin: 10px 0; border-radius: 18px; border: 1px solid #333; background: #000; color: #fff; outline: none; }
+.unlock-btn { width: 100%; padding: 18px; border: none; border-radius: 18px; background: var(--primary); color: #000; font-weight: 900; cursor: pointer; margin-top: 10px; box-shadow: 0 0 20px rgba(0,242,255,0.3); }
+
+/* 🚀 Header & Tabs */
+.app-header { display: flex; justify-content: space-between; align-items: center; padding: 20px; background: rgba(17,20,27,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid #1f2937; }
+.pro-tag { background: linear-gradient(90deg, var(--gold), #ff8c00); border: none; padding: 6px 15px; border-radius: 50px; font-weight: 900; font-size: 10px; cursor: pointer; color: #000; }
+.settings-btn { background: none; border: none; color: #777; font-size: 22px; cursor: pointer; }
+
+.pro-nav { display: flex; padding: 15px; gap: 8px; background: #05070a; }
+.nav-tab { flex: 1; padding: 12px; background: #11141b; border: 1px solid #1f2937; border-radius: 15px; color: #555; font-weight: 800; font-size: 10px; cursor: pointer; }
+.nav-tab.active { border-color: var(--primary); color: var(--primary); background: rgba(0,242,255,0.05); }
+
+/* 📱 Tools Grid */
+.main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 15px; height: calc(100vh - 340px); overflow-y: auto; }
+.tool-card { background: #11141b; border: 1px solid #1f2937; border-radius: 35px; height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 0.3s; }
+.tool-card:active { transform: scale(0.95); background: #1a2233; }
+.tool-card i { font-size: 45px; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.1)); }
+.tool-card b { font-size: 10px; color: #aaa; letter-spacing: 1px; text-transform: uppercase; }
+
+/* 🎞️ Preview Monitor */
+.preview-monitor { margin: 15px; background: #000; border-radius: 30px; border: 1px solid #1f2937; height: 110px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-left: 4px solid var(--primary); }
+.monitor-screen { font-weight: 900; font-size: 14px; color: var(--primary); letter-spacing: 2px; }
+.monitor-info { font-size: 8px; color: #444; margin-top: 8px; font-weight: bold; }
+
+/* ⚙️ Modals */
+.modal-blur { position: fixed; inset: 0; background: rgba(0,0,0,0.9); backdrop-filter: blur(25px); z-index: 5000; display: flex; align-items: center; justify-content: center; }
+.modal-card { background: var(--card); padding: 35px; border-radius: 45px; border: 1px solid #1f2937; width: 88%; max-width: 380px; text-align: center; }
+.setting-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 13px; color: #ccc; }
+.plan { background: #000; padding: 18px; border-radius: 18px; margin: 10px 0; display: flex; justify-content: space-between; border: 1px solid #1f2937; cursor: pointer; }
+.gold { border-color: var(--gold); background: rgba(255,215,0,0.05); color: var(--gold); }
+.close-btn { width: 100%; padding: 15px; border-radius: 15px; border: none; background: #222; color: #fff; margin-top: 15px; font-weight: 700; cursor: pointer; }
+
+/* 🔘 Toggle Switch */
+.switch { position: relative; width: 40px; height: 22px; }
+.switch input { display: none; }
+.slider { position: absolute; inset: 0; background: #333; border-radius: 20px; transition: 0.4s; }
+input:checked + .slider { background: var(--primary); }
+.version { margin-top: 25px; font-size: 9px; color: #444; font-weight: bold; }
