@@ -78,8 +78,9 @@ function switchTab(cat) {
     document.getElementById(`btn-${cat}`).classList.add('active');
     const grid = document.getElementById('tools-grid');
     grid.innerHTML = "";
-    studioData[cat].forEach(t => {
-      grid.innerHTML += `<div class="tool-item" onclick="openStudio('${t.n}')"><i>${t.i}</i><b>${t.n}</b></div>`;
+    // Line 81 aur 82 ko mita kar sirf ye likho:
+grid.innerHTML += `<div class="tool-item" onclick="openStudio('${t.n}')"><i>${t.i}</i><b>${t.n}</b></div>`;
+
         
         
     });
@@ -98,11 +99,7 @@ function devClick() {
     devCounter++;
     if(devCounter >= 5) {
         window.location.href = "https://youtube.com/@RoshanJH02";
-        devCounter = 0;
-    }
-}
-let currentStyle = 'cinematic';
-let currentRatio = '1024x1024';
+        // --- Line 102 se ye naya aur saaf code paste karein ---
 
 function openStudio(name) {
     if(name === 'AI IMAGE') {
@@ -112,6 +109,20 @@ function openStudio(name) {
     }
 }
 
+function toggleModal(id) {
+    document.getElementById(id).style.display = 'none';
+}
+
+let currentStyle = 'cinematic';
+let currentRatio = '1024x1024';
+
+function selectStyle(el, style) {
+    document.querySelectorAll('.style-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+    currentStyle = style;
+}
+
+function setRatio(el, r) {
     document.querySelectorAll('.ratio-btn').forEach(b => b.classList.remove('active'));
     el.classList.add('active');
     if(r === '1:1') currentRatio = '1024x1024';
@@ -128,10 +139,9 @@ async function startGeneration() {
     const btn = document.getElementById('generate-btn');
 
     loader.style.display = 'block';
-    display.innerHTML = ''; // Clear previous
+    display.innerHTML = ''; 
     btn.disabled = true;
 
-    // Building the AI Secret URL
     const seed = Math.floor(Math.random() * 999999);
     const width = currentRatio.split('x')[0];
     const height = currentRatio.split('x')[1];
@@ -139,7 +149,6 @@ async function startGeneration() {
     
     const imageUrl = `https://image.pollinations.ai/prompt/${fullPrompt}?width=${width}&height=${height}&seed=${seed}&nologo=true`;
 
-    // Pre-loading image
     const img = new Image();
     img.src = imageUrl;
     img.className = 'final-img';
@@ -148,7 +157,6 @@ async function startGeneration() {
         loader.style.display = 'none';
         display.appendChild(img);
         btn.disabled = false;
-        alert("Boom! PixiCraft ne Image taiyar kar di.");
     };
 }
-
+        
