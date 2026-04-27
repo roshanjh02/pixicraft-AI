@@ -1,1 +1,33 @@
+:root { --accent: #00f2ff; --bg: #0d1117; --card: #161b22; }
+
+/* 🔐 CENTER LAYOUT FIX */
+#auth-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg); display: flex; align-items: center; justify-content: center;
+    z-index: 10000; padding: 20px;
+}
+
+.auth-box {
+    background: var(--card); width: 100%; max-width: 400px; padding: 40px;
+    border-radius: 24px; border: 1px solid #30363d; text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.logo-text { color: var(--accent); font-size: 32px; margin-bottom: 25px; font-weight: 900; }
+
+.auth-tabs { display: flex; background: #000; padding: 5px; border-radius: 12px; margin-bottom: 25px; }
+.auth-tabs button { flex: 1; padding: 12px; border: none; background: none; color: #8b949e; cursor: pointer; border-radius: 10px; font-weight: bold; }
+.auth-tabs button.active { background: var(--accent); color: #000; }
+
+.input-group { background: #0d1117; border: 1px solid #30363d; border-radius: 12px; margin-bottom: 15px; display: flex; align-items: center; }
+.input-group i { padding: 0 15px; color: var(--accent); }
+.input-group input { width: 100%; padding: 15px 5px; background: none; border: none; color: #fff; outline: none; }
+
+.auth-btn { width: 100%; padding: 16px; background: var(--accent); border: none; border-radius: 12px; font-weight: 900; cursor: pointer; transition: 0.3s; }
+.auth-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,242,255,0.3); }
+
+.forgot-link { color: #58a6ff; font-size: 12px; cursor: pointer; margin: 10px 0; text-align: right; }
+
+/* Dashboard Hide initially */
+#app-ui { width: 100%; min-height: 100vh; background: var(--bg); }
 
